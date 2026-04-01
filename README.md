@@ -25,7 +25,7 @@
 
 Sou analista de dados numa indústria de transformadores eletroeletrônicos.
 SQL é meu pão de cada dia. Python entra com frequência. Power BI, TOTVS Protheus,
-otimização de queries, índices, purga de dados — esse é o meu mundo.
+otimização de queries, índices, limpeza de dados — esse é o meu mundo.
 
 Mas tem uma fronteira que sempre me incomodou: **backend web**.
 
@@ -36,8 +36,8 @@ ou assumem que você tem tempo infinito e paciência infinita para tutoriais que
 
 Então decidi fazer diferente.
 
-Em vez de consumir um curso pronto, resolvi **gerar um** — ao vivo, com IA, documentando
-cada passo, cada dúvida, cada exercício. E publicar tudo de graça para quem vier depois.
+Em vez de consumir um curso pronto, resolvi **gerar um** — ao vivo, com IA, registrando
+cada dúvida e cada avanço. E publicar tudo de graça para quem vier depois.
 
 Esse repositório é o resultado disso.
 
@@ -49,7 +49,7 @@ Uma plataforma de aprendizado open source onde **o curso é gerado pela jornada 
 
 Não existe roteiro pré-escrito. Não existe estúdio de gravação. Existe um analista de dados
 que quer aprender a desenvolver, uma IA que atua como professor sênior, e um processo
-documentado em público — falhas incluídas.
+documentado em público — tropeços incluídos.
 
 Cada módulo nasce de uma sessão de estudo real:
 
@@ -86,8 +86,7 @@ Você sai de cada módulo capaz de **fazer algo real** — não de ter assistido
 Mas o Pareto aqui vai além de uma técnica de estudo.
 
 Ele é o princípio que usamos para **estruturar o próprio curso**. Cada módulo
-é destilado para conter apenas o essencial. Cada exercício é calibrado para
-treinar exatamente a habilidade que mais importa naquele ponto da jornada.
+é destilado para conter apenas o essencial. Cada exercício foca na habilidade que mais importa naquele momento.
 O resultado é um curso que qualquer pessoa pode usar — não só quem tem
 horas livres por dia.
 
@@ -298,6 +297,6 @@ $ _
 
 **[→ acessar vibe2hero.dev.br](https://vibe2hero.dev.br)**
 
-*feito por humano + IA · open source · gratuito · em construção permanente*
+*feito por humano + IA · open source · gratuito · sempre crescendo*
 
 </div>
