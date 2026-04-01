@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aprenda Node.js do zero com o princípio de Pareto. 16 módulos, gratuito, em português.">
+  <title>node.js — vibe2hero</title>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <style>
+    .page-wrap {
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      min-height: 100vh;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      padding: var(--space-lg) var(--space-md);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .sidebar__logo { padding-bottom: var(--space-md); border-bottom: 1px solid var(--border-subtle); }
+    .sidebar__section-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: var(--space-xs) 0;
+    }
+    .sidebar__modules { display: flex; flex-direction: column; gap: 4px; }
+    .sidebar__progress { margin-top: auto; padding-top: var(--space-md); border-top: 1px solid var(--border-subtle); }
+
+    /* MAIN */
+    .main { padding: var(--space-xl); }
+    .main__header { margin-bottom: var(--space-xl); }
+    .main__header-top {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+    .back-link { font-size: 11px; color: var(--text-muted); }
+    .back-link:hover { color: var(--orange); opacity: 1; }
+
+    /* GRID DE MÓDULOS */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: var(--space-lg);
+    }
+    .module-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px var(--space-md);
+      text-decoration: none;
+      display: block;
+      transition: all var(--transition);
+    }
+    .module-item:hover { border-color: var(--orange-border); background: var(--bg-elevated); opacity: 1; }
+    .module-item__top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .module-item__num { font-size: 11px; color: var(--orange); min-width: 30px; }
+    .module-item__name { font-size: 12px; color: var(--text-primary); font-weight: 500; flex: 1; }
+    .module-item__desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px; }
+    .module-item__footer { display: flex; align-items: center; gap: 8px; }
+    .module-item__weeks { font-size: 10px; color: var(--text-muted); }
+
+    /* INFO CARD */
+    .info-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+    .info-card__title { font-size: 12px; color: var(--text-muted); margin-bottom: var(--space-sm); }
+
+    /* PARETO BOX */
+    .pareto-box {
+      background: rgba(255,140,0,0.05);
+      border: 1px solid var(--orange-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md) var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+    .pareto-box__label { font-size: 10px; color: var(--orange); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .pareto-box__text  { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <a href="../../index.html" style="text-decoration:none;">
+        <span class="t-logo" style="font-size:18px;">
+          <span>vibe</span><span style="color:var(--text-muted)">2</span><span>hero</span>
+        </span>
+      </a>
+      <div style="margin-top:6px;">
+        <span class="badge badge--track">⬡ node.js</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="sidebar__section-label">progresso global</div>
+      <div class="progress">
+        <div class="progress__track">
+          <div class="progress__fill" id="sidebar-progress-fill" style="width:0%"></div>
+        </div>
+        <div class="progress__label">
+          <span id="sidebar-done">0 / 16 módulos</span>
+          <span id="sidebar-pct">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sidebar__section-label">módulos</div>
+      <div class="sidebar__modules" id="sidebar-modules">
+        <!-- gerado via JS -->
+      </div>
+    </div>
+
+    <div class="sidebar__progress">
+      <a href="../../faq/index.html" style="font-size:11px; color:var(--text-muted);">dúvidas frequentes →</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="main__header">
+      <div class="main__header-top">
+        <a href="../../index.html" class="back-link">← todas as tracks</a>
+      </div>
+
+      <div class="prompt" style="margin-bottom:var(--space-md);">
+        <span class="prompt__dir">~/vibe2hero/tracks/nodejs</span>
+        <span class="prompt__sym"> $ </span>
+        <span class="prompt__cmd">ls modulos/</span>
+      </div>
+
+      <h1 class="t-h1">node.js — do zero ao herói</h1>
+      <p class="t-muted" style="margin-top:8px; line-height:1.7;">
+        16 módulos · princípio de pareto · teoria + exemplo + exercício · ~14 semanas
+      </p>
+    </div>
+
+    <!-- PARETO BOX -->
+    <div class="pareto-box">
+      <div class="pareto-box__label">// princípio de pareto aplicado</div>
+      <div class="pareto-box__text">
+        Cada módulo foca nos <code>20%</code> do conteúdo que entrega <code>80%</code> dos resultados práticos.
+        Você aprende o que realmente importa primeiro — sem enrolação, sem tutorial hell.
+        As aulas são geradas ao vivo pela interação real entre um aluno e uma IA.
+      </div>
+    </div>
+
+    <!-- GRID DE MÓDULOS -->
+    <div class="section-divider mt-lg">
+      <span class="section-divider__label">todos os módulos</span>
+    </div>
+
+    <div class="modules-grid" id="modules-grid">
+      <!-- gerado via JS -->
+    </div>
+
+    <!-- INFO -->
+    <div class="info-card mt-lg">
+      <div class="info-card__title">// como funciona</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--space-md); margin-top:var(--space-sm);">
+        <div>
+          <div style="color:var(--orange); font-size:12px; font-weight:700; margin-bottom:4px;">01 · teoria</div>
+          <div style="font-size:11px; color:var(--text-secondary); line-height:1.6;">~5 min. Conceito essencial sem rodeios. Analogias com o que você já sabe.</div>
+        </div>
+        <div>
+          <div style="color:var(--orange); font-size:12px; font-weight:700; margin-bottom:4px;">02 · exemplo real</div>
+          <div style="font-size:11px; color:var(--text-secondary); line-height:1.6;">~10 min. Código funcional comentado. Situação do mundo real.</div>
+        </div>
+        <div>
+          <div style="color:var(--orange); font-size:12px; font-weight:700; margin-bottom:4px;">03 · exercício</div>
+          <div style="font-size:11px; color:var(--text-secondary); line-height:1.6;">~30 min. Você escreve. A IA revisa. Feedback linha por linha.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="../../assets/js/app.js"></script>
+<script>
+  const MODULES = [
+    { id:'m01', num:'M01', name:'intro ao node.js',      level:'begin', desc:'O que é Node, V8, CommonJS vs ESM, o global object.',        weeks:'semana 1',    topics:5, href:'modulos/m01-intro/index.html' },
+    { id:'m02', num:'M02', name:'npm & pacotes',          level:'begin', desc:'package.json, install, scripts, semantic versioning.',       weeks:'semana 1–2',  topics:5, href:'modulos/m02-npm/index.html' },
+    { id:'m03', num:'M03', name:'async programming',      level:'begin', desc:'Event Loop, Promises, async/await — o coração do Node.',    weeks:'semana 2–3',  topics:5, href:'#' },
+    { id:'m04', num:'M04', name:'error handling',         level:'begin', desc:'Tipos de erro, try/catch async, uncaught exceptions.',       weeks:'semana 3',    topics:5, href:'#' },
+    { id:'m05', num:'M05', name:'módulos built-in',       level:'begin', desc:'path, fs (promises), process.env — os 3 mais usados.',      weeks:'semana 4',    topics:5, href:'#' },
+    { id:'m06', num:'M06', name:'working with files',     level:'inter', desc:'fs-extra, glob, chokidar, streams básico.',                  weeks:'semana 4–5',  topics:5, href:'#' },
+    { id:'m07', num:'M07', name:'cli apps',               level:'inter', desc:'commander, chalk, dotenv, input interativo.',               weeks:'semana 5',    topics:5, href:'#' },
+    { id:'m08', num:'M08', name:'building apis — express',level:'begin', desc:'Routes, middleware, Router, body parsing, error handler.',  weeks:'semana 6–7',  topics:5, href:'#' },
+    { id:'m09', num:'M09', name:'http calls',             level:'inter', desc:'fetch nativo (Node 18+), axios, tratamento de erros.',      weeks:'semana 7',    topics:5, href:'#' },
+    { id:'m10', num:'M10', name:'autenticação (jwt)',      level:'inter', desc:'JWT sign/verify, middleware de auth no Express.',           weeks:'semana 8',    topics:5, href:'#' },
+    { id:'m11', num:'M11', name:'banco de dados',         level:'inter', desc:'Prisma + PostgreSQL, CRUD, migrations.',                   weeks:'semana 9–10', topics:5, href:'#' },
+    { id:'m12', num:'M12', name:'testing',                level:'inter', desc:'Vitest, TDD Red-Green-Refactor, mocks, supertest.',        weeks:'semana 10–11',topics:5, href:'#' },
+    { id:'m13', num:'M13', name:'keep app running',       level:'inter', desc:'pm2, Winston, Morgan, env em produção.',                   weeks:'semana 11',   topics:5, href:'#' },
+    { id:'m14', num:'M14', name:'streams',                level:'adv',   desc:'ReadStream, WriteStream, pipe(), transform streams.',      weeks:'semana 12',   topics:5, href:'#' },
+    { id:'m15', num:'M15', name:'threads & cluster',      level:'adv',   desc:'Worker Threads (CPU-bound), Cluster, Child Process.',      weeks:'semana 12–13',topics:5, href:'#' },
+    { id:'m16', num:'M16', name:'debugging & performance',level:'adv',   desc:'node --inspect, DevTools, memory leaks, APM.',            weeks:'semana 13–14',topics:5, href:'#' },
+  ];
+
+  const BADGE = { begin:'badge--begin', inter:'badge--inter', adv:'badge--adv' };
+  const BADGE_LABEL = { begin:'iniciante', inter:'intermediário', adv:'avançado' };
+
+  Progress.load();
+
+  function renderGrid() {
+    const grid = document.getElementById('modules-grid');
+    grid.innerHTML = MODULES.map(m => {
+      const done = Progress.countModule('nodejs', m.id, m.topics);
+      const pct  = Math.round(done / m.topics * 100);
+      const available = m.href !== '#';
+      const cls = available ? '' : 'style="opacity:0.55; pointer-events:none;"';
+      return `
+        <a href="${m.href}" class="module-item" ${cls}>
+          <div class="module-item__top">
+            <span class="module-item__num">${m.num}</span>
+            <span class="module-item__name">${m.name}</span>
+            <span class="badge ${BADGE[m.level]}">${BADGE_LABEL[m.level]}</span>
+          </div>
+          <div class="module-item__desc">${m.desc}</div>
+          <div class="module-item__footer">
+            <div class="progress" style="flex:1;">
+              <div class="progress__track">
+                <div class="progress__fill" style="width:${pct}%"></div>
+              </div>
+            </div>
+            <span class="module-item__weeks">${m.weeks}</span>
+            ${!available ? '<span style="font-size:10px;color:var(--text-muted);">em breve</span>' : ''}
+          </div>
+        </a>`;
+    }).join('');
+  }
+
+  function renderSidebar() {
+    const sb = document.getElementById('sidebar-modules');
+    sb.innerHTML = MODULES.map(m => {
+      const done = Progress.countModule('nodejs', m.id, m.topics);
+      const allDone = done === m.topics;
+      const statusClass = allDone ? 'module-card__status--done' : (done > 0 ? 'module-card__status--active' : 'module-card__status--locked');
+      const statusText  = allDone ? '✓ feito' : (done > 0 ? `● ${done}/${m.topics}` : '○');
+      const available = m.href !== '#';
+      return `
+        <a href="${available ? m.href : '#'}" class="module-card" style="font-size:11px; padding:6px 8px; ${!available ? 'opacity:0.4;pointer-events:none;' : ''}">
+          <span class="module-card__num" style="font-size:10px;">${m.num}</span>
+          <span class="module-card__name" style="font-size:11px;">${m.name}</span>
+          <span class="module-card__status ${statusClass}" style="font-size:10px;">${statusText}</span>
+        </a>`;
+    }).join('');
+  }
+
+  function renderGlobalProgress() {
+    const total = MODULES.reduce((a, m) => a + m.topics, 0);
+    let done = 0;
+    MODULES.forEach(m => { done += Progress.countModule('nodejs', m.id, m.topics); });
+    const pct = Math.round(done / total * 100);
+    const modDone = MODULES.filter(m => Progress.countModule('nodejs', m.id, m.topics) === m.topics).length;
+
+    document.getElementById('sidebar-progress-fill').style.width = pct + '%';
+    document.getElementById('sidebar-done').textContent = `${modDone} / ${MODULES.length} módulos`;
+    document.getElementById('sidebar-pct').textContent = pct + '%';
+  }
+
+  renderGrid();
+  renderSidebar();
+  renderGlobalProgress();
+</script>
+</body>
+</html>

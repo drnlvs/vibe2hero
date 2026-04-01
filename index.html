@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="vibe2hero — aprenda programação do zero com trilhas geradas por IA. Gratuito, open source, em português.">
+  <title>vibe2hero — aprenda do zero. torne-se dev.</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <style>
+    /* Estilos exclusivos da home */
+    .hero {
+      padding: 80px var(--space-xl) 60px;
+      max-width: 860px;
+    }
+    .hero__eyebrow {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--space-md);
+    }
+    .hero__title {
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: var(--space-md);
+    }
+    .hero__title .accent { color: var(--orange); }
+    .hero__title .dim    { color: var(--text-muted); }
+    .hero__sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 560px;
+      margin-bottom: var(--space-xl);
+    }
+    .hero__actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+
+    .terminal-hero {
+      margin: 0 var(--space-xl) var(--space-xl);
+      max-width: 680px;
+    }
+
+    .tracks-section {
+      padding: 0 var(--space-xl) var(--space-2xl);
+    }
+    .tracks-section__header {
+      margin-bottom: var(--space-lg);
+    }
+
+    .stats-strip {
+      display: flex;
+      gap: var(--space-xl);
+      padding: var(--space-lg) var(--space-xl);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: var(--space-xl);
+      background: var(--bg-surface);
+    }
+    .stat { }
+    .stat__num   { font-size: 22px; font-weight: 700; color: var(--orange); }
+    .stat__label { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    .footer {
+      padding: var(--space-xl);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+    .footer__copy { font-size: 11px; color: var(--text-muted); }
+    .footer__links { display: flex; gap: var(--space-lg); }
+    .footer__links a { font-size: 11px; color: var(--text-muted); }
+    .footer__links a:hover { color: var(--orange); opacity: 1; }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      padding: 14px var(--space-xl);
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav__logo { flex: 1; }
+    .nav__links { display: flex; gap: var(--space-lg); align-items: center; }
+    .nav__links a { font-size: 12px; color: var(--text-secondary); }
+    .nav__links a:hover { color: var(--orange); opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__logo">
+      <span class="t-logo">
+        <span>vibe</span><span style="color:var(--text-muted)">2</span><span>hero</span>
+      </span>
+    </div>
+    <div class="nav__links">
+      <a href="#tracks">tracks</a>
+      <a href="faq/index.html">faq</a>
+      <a href="https://github.com/seuusuario/vibe2hero" target="_blank">github</a>
+      <a href="tracks/nodejs/index.html" class="btn btn--orange-ghost">começar agora</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero__eyebrow">// open source · gratuito · gerado com ia</p>
+    <h1 class="hero__title">
+      aprenda do<br>
+      <span class="accent">zero</span><span class="dim">.</span><br>
+      torne-se <span class="accent">dev</span><span class="dim">.</span>
+    </h1>
+    <p class="hero__sub">
+      Trilhas de aprendizado completas, geradas ao vivo por IA com um aluno real.
+      Teoria objetiva, exemplos reais e exercícios práticos — do zero ao herói,
+      uma aula de cada vez.
+    </p>
+    <div class="hero__actions">
+      <a href="tracks/nodejs/index.html" class="btn btn--primary">▶ começar node.js</a>
+      <a href="https://github.com/seuusuario/vibe2hero" class="btn btn--ghost" target="_blank">⭐ star no github</a>
+    </div>
+  </section>
+
+  <!-- TERMINAL ANIMADO -->
+  <div class="terminal-hero">
+    <div class="terminal">
+      <div class="terminal__bar">
+        <div class="terminal__dot terminal__dot--r"></div>
+        <div class="terminal__dot terminal__dot--y"></div>
+        <div class="terminal__dot terminal__dot--g"></div>
+        <span class="terminal__title">vibe2hero.com.br — bash</span>
+      </div>
+      <div class="terminal__body" style="padding: 20px 28px;">
+        <div class="prompt" style="margin-bottom:4px;">
+          <span class="prompt__dir">~/vibe2hero</span>
+          <span class="prompt__git"> (main)</span>
+          <span class="prompt__sym"> $ </span>
+          <span class="prompt__cmd">node index.js</span>
+        </div>
+        <div style="margin-top:14px; margin-left: 0;">
+          <div style="font-size:12px; color: var(--text-muted); margin-bottom:8px;">
+            <span style="color:#3b6d11;">✓</span> carregando trilha: <span style="color:var(--orange);">node.js</span>
+          </div>
+          <div style="font-size:12px; color: var(--text-muted); margin-bottom:8px;">
+            <span style="color:#3b6d11;">✓</span> princípio de pareto: <span style="color:var(--orange);">ativado</span>
+          </div>
+          <div style="font-size:12px; color: var(--text-muted); margin-bottom:16px;">
+            <span style="color:#3b6d11;">✓</span> módulos disponíveis: <span style="color:var(--orange);">16</span>
+          </div>
+          <div style="font-size:13px; color: var(--text-primary); line-height:1.9;">
+            <span style="color:var(--orange);">→</span> bem-vindo, dev.<br>
+            <span style="color:var(--orange);">→</span> seu próximo módulo: <span style="color:#e8e8e8; font-weight:700;">m01 — intro ao node.js</span><br>
+            <span style="color:var(--text-muted);">→ tempo estimado: 45min · nível: iniciante</span>
+          </div>
+        </div>
+        <div class="prompt" style="margin-top:18px;">
+          <span class="prompt__sym">$ </span>
+          <span class="prompt__cursor"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat">
+      <div class="stat__num">16</div>
+      <div class="stat__label">módulos · node.js</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">~14</div>
+      <div class="stat__label">semanas de conteúdo</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">$0</div>
+      <div class="stat__label">custo total</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num" id="stat-tracks">1</div>
+      <div class="stat__label">tracks ativos</div>
+    </div>
+  </div>
+
+  <!-- TRACKS -->
+  <section class="tracks-section" id="tracks">
+    <div class="tracks-section__header">
+      <div class="section-divider">
+        <span class="section-divider__label">trilhas disponíveis</span>
+      </div>
+    </div>
+
+    <div class="track-grid">
+
+      <!-- Node.js — ativo -->
+      <a href="tracks/nodejs/index.html" class="track-card track-card--active">
+        <div class="track-card__icon">⬡</div>
+        <div class="track-card__name">node.js</div>
+        <div class="track-card__desc">
+          Backend, APIs REST, banco de dados, autenticação e produção.
+          Do event loop ao pm2.
+        </div>
+        <div style="margin-top:10px; display:flex; align-items:center; gap:8px;">
+          <span class="badge badge--track">● ativo</span>
+          <span style="font-size:10px; color:var(--text-muted);">16 módulos</span>
+        </div>
+        <div class="progress mt-sm">
+          <div class="progress__track">
+            <div class="progress__fill" id="nodejs-progress" style="width:0%"></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Python — em breve -->
+      <div class="track-card track-card--soon">
+        <div class="track-card__icon">🐍</div>
+        <div class="track-card__name">python</div>
+        <div class="track-card__desc">
+          Scripts, data science, FastAPI e automações.
+          Do zero ao deploy.
+        </div>
+        <div style="margin-top:10px;">
+          <span class="badge badge--soon">em breve</span>
+        </div>
+      </div>
+
+      <!-- TypeScript — em breve -->
+      <div class="track-card track-card--soon">
+        <div class="track-card__icon">Ts</div>
+        <div class="track-card__name">typescript</div>
+        <div class="track-card__desc">
+          Tipagem, interfaces, generics e integração com Node.js e React.
+        </div>
+        <div style="margin-top:10px;">
+          <span class="badge badge--soon">em breve</span>
+        </div>
+      </div>
+
+      <!-- SQL Avançado — em breve -->
+      <div class="track-card track-card--soon">
+        <div class="track-card__icon">⊞</div>
+        <div class="track-card__name">sql avançado</div>
+        <div class="track-card__desc">
+          Performance, índices, window functions e tuning real.
+        </div>
+        <div style="margin-top:10px;">
+          <span class="badge badge--soon">em breve</span>
+        </div>
+      </div>
+
+      <!-- DevOps — em breve -->
+      <div class="track-card track-card--soon">
+        <div class="track-card__icon">∞</div>
+        <div class="track-card__name">devops</div>
+        <div class="track-card__desc">
+          Docker, CI/CD, Nginx, VPS e deploy de aplicações reais.
+        </div>
+        <div style="margin-top:10px;">
+          <span class="badge badge--soon">em breve</span>
+        </div>
+      </div>
+
+      <!-- Contribua — card especial -->
+      <div class="track-card" style="border-style:dashed; cursor:default;">
+        <div class="track-card__icon">+</div>
+        <div class="track-card__name" style="color:var(--text-secondary);">sugerir track</div>
+        <div class="track-card__desc">
+          Tem uma linguagem ou tecnologia que quer ver aqui?
+          Abre uma issue no GitHub.
+        </div>
+        <div style="margin-top:10px;">
+          <a href="https://github.com/seuusuario/vibe2hero/issues" target="_blank" class="btn btn--ghost" style="font-size:10px; padding:4px 10px;">abrir issue ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer__copy">
+      © 2026 vibe2hero.com.br · <span style="color:var(--orange);">MIT License</span> · feito por humano + IA
+    </span>
+    <div class="footer__links">
+      <a href="https://github.com/seuusuario/vibe2hero" target="_blank">github</a>
+      <a href="faq/index.html">faq</a>
+      <a href="tracks/nodejs/index.html">node.js</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
